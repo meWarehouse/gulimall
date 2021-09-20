@@ -1,0 +1,42 @@
+server:
+  port: 10000
+#配置数据源
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.44.104:3306/gulimall_pms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: gulimall-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.44.104
+    port: 6379
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1 #逻辑删除
+      logic-not-delete-value: 0 #逻辑不删除
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#logging:
+#  level:
+#    com.atguigu.gulimall: debug
+logging:
+  level:
+    com.atguigu.gulimall.product: debug
